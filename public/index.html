@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="cityName" />
+      <button id="getWeather">Get Weather</button>
+      <div id="result">
+        <span id="countryCity"></span>
+        <span id="tempInC"></span>
+        <span id="otherWeatherData"></span>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+         axios
+          .get(`/weather/karachi`)
+          .then(function (response) {
+            document.querySelector("#countryCity").innerHTML = `${response.data.country}, ${response.data.city}`;
+            document.querySelector("#tempInC").innerHTML = `${response.data.tempInC}°C`;
+            document.querySelector("#otherWeatherData").innerHTML = ` Humidity:${response.data.humidity}% || High:${response.data.high}°C || low:${response.data.low}°C`;
+          })
+ 
+      document.getElementById("getWeather").addEventListener("click", () => {
+        let cityName = document.querySelector("#cityName").value;
+        axios
+          .get(`/weather/${cityName}`)
+          .then(function (response) {
+            console.log(response.data);
+            document.querySelector("#countryCity").innerHTML = `${response.data.country}, ${response.data.city}`;
+            document.querySelector("#tempInC").innerHTML = `${response.data.tempInC}°C`;
+            document.querySelector("#otherWeatherData").innerHTML = ` Humidity:${response.data.humidity}% || High:${response.data.high}°C || low:${response.data.low}°C`;
+          })
+          .catch(function (error) {
+            console.log(error.data);
+            document.querySelector("#countryCity").innerText = "Undefine";
+            document.querySelector("#tempInC").innerText = "Undefine";
+            document.querySelector("#otherWeatherData").innerText = `Can't get weather data for ${cityName}`;
+          });
+      });
+    </script>
+  </body>
+</html>

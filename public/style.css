@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background: linear-gradient(to bottom, black, rgb(120, 120, 120));
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-image: url(./bg.jpg);
+  background-position: center;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
+  backdrop-filter: blur(5px);
+  border: 2px solid white;
+  padding: 5vh 8vh;
+  border-radius: 4em;
+}
+input {
+  width: 60vh;
+  padding: 5px 2vh;
+  font-size: 5vh;
+  border-radius: 40px;
+  background-color: rgba(0, 0, 0, 0.244);
+  outline: 2px solid white;
+  border: none;
+  color: white;
+}
+input:focus {
+  outline-offset: 4px;
+}
+button {
+  padding: 2vh 5vh;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: linear-gradient(to bottom, rgb(66, 152, 227), rgb(202, 198, 198));
+  font-weight: bolder;
+  cursor: pointer;
+}
+#result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 0.5em;
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+#countryCity,
+#otherWeatherData {
+  font-size: 1.2em;
+}
+#tempInC {
+  font-size: 3em;
+  font-weight: bolder;
+}
+
+@media (max-width: 512px) {
+  .container {
+    border-radius: 40px;
+    padding: 4vh 4vh;
+  }
+  input {
+    width: 50vh;
+  }
+  #countryCity,
+  #otherWeatherData {
+    font-size: 1em;
+  }
+  #tempInC {
+    font-size: 2.7em;
+    font-weight: bolder;
+  }
+}
